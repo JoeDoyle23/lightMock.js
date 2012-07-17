@@ -1,5 +1,5 @@
 (function (exports) {
-    exports.Mock = function () {
+    exports.lightMock = function () {
         var _mock = {
             stubs: [],
             raiseFail: function (message) {
@@ -16,6 +16,7 @@
                 this.stubs.length = 0;
             },
             extend: function (obj) {
+                ///<summary>Identifies the object that owns the fucntion to be stubbed</summary>
                 var stubs = this.stubs;
                 obj.stub = function (name, newBehavior) {
                     var callLimit = null, callCount = 0, callParameters = [];
@@ -24,7 +25,7 @@
                     obj[name] = function () {
                         ++callCount;
                         if (callLimit !== null && callLimit < callCount) {
-                            _mock.raiseFail("'" + name + "' has been called more than the limit of " + callLimit);
+                            _mock.raiseFail("'" + name + "' has been called more than the expected limit of " + callLimit);
                         }
                         callParameters = arguments;
                         return newBehavior.apply(obj, arguments);
