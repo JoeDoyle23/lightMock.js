@@ -1,3 +1,10 @@
+/**
+* qunit.basicMock v0.5 - A Basic JavaScript Mocking object for the QUnit Unit Testing Framework
+*
+* Copyright (c) 2012 Joe Doyle - @JoeDoyle23 - 
+* Licensed under the MIT (MIT-LICENSE.txt)
+*/
+
 (function (exports) {
     exports.lightMock = function () {
         var _mock = {
@@ -109,5 +116,5 @@
             }
         };
         return _mock;
-    };
-}(window));
+    } ();
+} (window));
