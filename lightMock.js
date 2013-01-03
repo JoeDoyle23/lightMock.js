@@ -1,5 +1,5 @@
 /**
-* qunit.basicMock v0.5 - A Basic JavaScript Mocking object for the QUnit Unit Testing Framework
+* qunit.basicMock v0.5.1 - A Basic JavaScript Mocking object for the QUnit Unit Testing Framework
 *
 * Copyright (c) 2012 Joe Doyle - @JoeDoyle23 - 
 * Licensed under the MIT (MIT-LICENSE.txt)
@@ -26,6 +26,9 @@
                 ///<summary>Identifies the object that owns the fucntion to be stubbed</summary>
                 var stubs = this.stubs;
                 obj.stub = function (name, newBehavior) {
+                    //Use empty method if none provided
+                    newBehavior = newBehavior || function() {};
+                    
                     var callLimit = null, callCount = 0, callParameters = [];
                     var original = obj[name];
 
